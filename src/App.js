@@ -11,7 +11,8 @@ import Modal from "./components/Modal/Modal";
 import "./App.css";
 
 const initialState = {
-  input: "",
+  input:
+    "https://img.freepik.com/free-photo/people-taking-selfie-together-registration-day_23-2149096795.jpg?w=2000",
   imageUrl: "",
   boxes: [],
   route: "signin",
@@ -35,6 +36,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.onButtonSubmit();
     const token = window.sessionStorage.getItem("token");
     if (token) {
       fetch(`${process.env.REACT_APP_SERVER_URL}/signin`, {
@@ -138,6 +140,7 @@ class App extends Component {
 
   render() {
     const { imageUrl, boxes } = this.state;
+
     return (
       <div className="App">
         <ParticlesBg type="circle" bg={true} />
