@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import ParticlesBg from "particles-bg";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Navigation from "./components/Navigation/Navigation";
-import Signin from "./components/Signin/Signin";
-import Register from "./components/Register/Register";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
@@ -157,47 +155,19 @@ class App extends Component {
   };
 
   render() {
-    const { isSignedIn, imageUrl, route, boxes, isProfileOpen, user } =
-      this.state;
+    const { isSignedIn, imageUrl, boxes, isProfileOpen, user } = this.state;
     return (
       <div className="App">
         <ParticlesBg type="circle" bg={true} />
-        <Navigation
-          isSignedIn={isSignedIn}
-          onRouteChange={this.onRouteChange}
-          toggleModal={this.toggleModal}
-        />
-        {isProfileOpen && (
-          <Modal>
-            <Profile
-              isProfileOpen={isProfileOpen}
-              toggleModal={this.toggleModal}
-              user={user}
-              loadUser={this.loadUser}
-            />
-          </Modal>
-        )}
-        {route === "home" ? (
-          <div>
-            <Logo />
-            <Rank
-              name={this.state.user.name}
-              entries={this.state.user.entries}
-            />
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}
-            />
-            <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
-          </div>
-        ) : route === "signin" ? (
-          <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-        ) : (
-          <Register
-            loadUser={this.loadUser}
-            onRouteChange={this.onRouteChange}
+
+        <div>
+          <Logo />
+          <ImageLinkForm
+            onInputChange={this.onInputChange}
+            onButtonSubmit={this.onButtonSubmit}
           />
-        )}
+          <FaceRecognition boxes={boxes} imageUrl={imageUrl} />
+        </div>
       </div>
     );
   }
