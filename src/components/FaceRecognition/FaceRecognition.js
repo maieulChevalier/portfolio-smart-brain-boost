@@ -1,5 +1,6 @@
 import React from "react";
 import "./FaceRecognition.css";
+import people from "../../assets/people.webp";
 
 const FaceRecognition = ({ imageUrl, boxes }) => {
   return (
@@ -7,8 +8,8 @@ const FaceRecognition = ({ imageUrl, boxes }) => {
       <div className="absolute pa2">
         <img
           id="inputimage"
-          alt=""
-          src={imageUrl}
+          alt="a group of people taking a selfie"
+          src={imageUrl === "" ? people : imageUrl}
           className="w-100 h-auto br1"
           style={{ maxWidth: "500px" }}
         />
