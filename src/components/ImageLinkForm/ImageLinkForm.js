@@ -10,9 +10,9 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
       <div className="center">
         <div className="form center pa4 br3 shadow-5">
           <input
-            value="https://img.freepik.com/free-photo/people-taking-selfie-together-registration-day_23-2149096795.jpg?w=2000"
             className="f4 pa2 w-70 center"
             type="tex"
+            placeholder="https://img.freepik.com/free-photo/people-taking-selfie-together-registration-day_23-2149096795.jpg?w=2000"
             onChange={onInputChange}
           />
           <button
