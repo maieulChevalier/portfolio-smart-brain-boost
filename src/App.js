@@ -108,7 +108,6 @@ class App extends Component {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        Authorization: window.sessionStorage.getItem("token"),
       },
       body: JSON.stringify({
         input: this.state.input,
@@ -116,23 +115,6 @@ class App extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response) {
-          fetch(`${process.env.REACT_APP_SERVER_URL}/image`, {
-            method: "put",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: window.sessionStorage.getItem("token"),
-            },
-            body: JSON.stringify({
-              id: this.state.user.id,
-            }),
-          })
-            .then((response) => response.json())
-            .then((count) => {
-              this.setState(Object.assign(this.state.user, { entries: count }));
-            })
-            .catch(console.log);
-        }
         this.displayFaceBox(this.calculateFaceLocation(response));
       })
       .catch((err) => console.log(err));
@@ -155,7 +137,7 @@ class App extends Component {
   };
 
   render() {
-    const { isSignedIn, imageUrl, boxes, isProfileOpen, user } = this.state;
+    const { imageUrl, boxes } = this.state;
     return (
       <div className="App">
         <ParticlesBg type="circle" bg={true} />
